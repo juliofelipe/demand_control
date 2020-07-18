@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Demandas</title>
+</head>
+<body>
+    <table>
+        <thead>
+            </tr>
+                <th>Data da Solicitação</th>
+                <th>Demandante</th>
+                <th>Demanda</th>
+                <th>Atribuição</th>
+                <th>Canal</th>
+                <th>Previsão de data a concluir</th>
+                <th>Observação</th>
+                <th>Data efetiva da entrega</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    
+    <tbody>
+        {% for demand in demands %}
+        <tr>
+            <td>{{ demand.request_date }}</td>
+            <td>{{ demand.demandant }}</td>
+            <td>{{ demand.demand }}</td>
+            <td>{{ demand.assignment }}</td>
+            <td>{{ demand.channel }}</td>
+            <td>{{ demand.completion_date }}</td>
+            <td>{{ demand.note }}</td>
+            <td>{{ demand.effective_date_completion }}</td>
+            <td><a href="{% url 'demand_update' demand.id %}">Atualizar</a></td>
+            <td><a href="{% url 'demand_delete' demand.id %}">Apagar</a></td>
+           
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'demand_new' %}">Novo</a>
+</body>
+</html>

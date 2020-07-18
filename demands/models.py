@@ -2,33 +2,33 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Demandante(models.Model):
-  nome_damandante = models.CharField(max_length=25, null=True, blank=True)
+class Demandant(models.Model):
+  demandant_name = models.CharField(max_length=25, null=True, blank=True)
 
   def __str__(self):
-    return self.nome_damandante
+    return self.demandant_name
 
 
-class Canal(models.Model):
-  nome_canal = models.CharField(max_length=25, null=True, blank=True)
+class Channel(models.Model):
+  channel_name = models.CharField(max_length=25, null=True, blank=True)
 
   def __str__(self):
-    return self.nome_canal
+    return self.channel_name
 
 
-class Demanda(models.Model):
-  data_solicitacao = models.DateField(null=True, blank=True)
-  data_conclusao = models.DateField(null=True, blank=True)
-  demanda = models.TextField()
+class Demand(models.Model):
+  request_date = models.DateField(null=True, blank=True)
+  completion_date = models.DateField(null=True, blank=True)
+  demand = models.TextField()
   image = models.ImageField(upload_to='demandas_photos', null=True, blank=True)
-  demandante = models.ManyToManyField('Demandante', blank=True)
-  atribuicao = models.ForeignKey(User,on_delete=models.PROTECT)
-  canal = models.ForeignKey(Canal, on_delete=models.PROTECT)
-  observacoes = models.TextField(null=True, blank=True)
-  data_efetiva_conclusao = models.DateField(null=True, blank=True)
+  demandant = models.ManyToManyField( Demandant, blank=True)
+  assignment = models.ForeignKey( User,on_delete=models.PROTECT)
+  channel = models.ForeignKey(Channel, on_delete=models.PROTECT)
+  note = models.TextField(null=True, blank=True)
+  effective_date_completion = models.DateField('Data efetiva da conclusão', null=True, blank=True)
 
   def __str__(self):
-    return self.demanda
+    return self.demand
 
 
 
