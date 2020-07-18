@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Demandas</title>
+</head>
+<body>
+    <ul>
+        {% for demanda in demandas %}
+            <li>{{ demanda.data_solicitacao }}</li>
+            <li>{{ demanda.data_conclusao }}</li>
+            <li>{{ demanda.demanda }}</li>
+            <li>{{ demanda.demandante }}</li>
+            <li>{{ demanda.canal }}</li>
+            <li>{{ demanda.observacoes }}</li>
+            <li>{{ demanda.data_efetiva_conclusao }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
